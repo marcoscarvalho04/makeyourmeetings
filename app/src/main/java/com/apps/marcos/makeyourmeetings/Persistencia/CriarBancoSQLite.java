@@ -1,4 +1,4 @@
-package Persistencia;
+package com.apps.marcos.makeyourmeetings.Persistencia;
 
 import com.apps.marcos.makeyourmeetings.Activities.MainActivity;
 import android.content.Context;
