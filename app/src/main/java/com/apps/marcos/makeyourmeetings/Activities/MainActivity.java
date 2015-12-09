@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /*Adicionando os componentes da tela as variáveis instanciadas de classe.*/
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.listReunioesMarcadas = (ListView) findViewById(R.id.listReunioesMarcadas);
