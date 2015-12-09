@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         this.listReunioesMarcadas = (ListView) findViewById(R.id.listReunioesMarcadas);
         this.bntMarcarReuniao = (Button) findViewById(R.id.bntMarcarReuniao);
         this.btnMostrarHistorico = (Button) findViewById(R.id.bntMostrarHistorico);
-
     }
 
     @Override
