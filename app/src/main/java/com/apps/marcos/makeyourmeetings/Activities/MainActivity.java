@@ -1,4 +1,5 @@
 package com.apps.marcos.makeyourmeetings.Activities;
+import com.apps.marcos.makeyourmeetings.R;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,7 +12,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.apps.marcos.makeyourmeetings.R;
+
 
 /*--------------------------------------------------------------------------------------------------------------------------------|
 * Aplicativo: Make your Meetings
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         /*Adicionando os componentes da tela as variáveis instanciadas de classe.*/
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.content_main);
         this.listReunioesMarcadas = (ListView) findViewById(R.id.listReunioesMarcadas);
         this.bntMarcarReuniao = (Button) findViewById(R.id.bntMarcarReuniao);
         this.btnMostrarHistorico = (Button) findViewById(R.id.bntMostrarHistorico);

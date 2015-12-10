@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MakeYourMeetings</string>
+    <string name="app_name">Make Your Meetings</string>
     <string name="action_settings">Settings</string>
     <string name="lblBtnMarcarReuniao">Agendar Reunião</string>
     <string name="lblBtnMostrarHistorico">Histórico</string>
