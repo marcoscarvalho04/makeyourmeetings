@@ -22,7 +22,7 @@ public class CriarBancoSQLite extends SQLiteOpenHelper {
     * -------------------------------------------------------------------------------------------------------------------------------|
         * */
     public CriarBancoSQLite(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, this.nomeBanco, null, this.versao);
+        super(context, nomeBanco, null, versao);
     }
     private static final String nomeBanco = "MakeYourMeetings.db";
     private static final int versao = 1;
@@ -43,7 +43,9 @@ public class CriarBancoSQLite extends SQLiteOpenHelper {
                       "INSERT INTO "+StatusReunioes.nomeTabelaStatusReunioes+"("+StatusReunioes.nomeCampoDescricaoStatusReunioes+")" +
                       "VALUES(Agendada)"+
                       "INSERT INTO "+StatusReunioes.nomeTabelaStatusReunioes+"("+StatusReunioes.nomeCampoDescricaoStatusReunioes+")" +
-                      "VALUES(Ocorrida)";;
+                      "VALUES(Ocorrida)"+
+                      "INSERT INTO "+StatusReunioes.nomeTabelaStatusReunioes+"("+StatusReunioes.nomeCampoDescricaoStatusReunioes+")" +
+                     "VALUES(Em Andamento)";;
         db.execSQL(SQL1);
         db.execSQL(SQL);
 

@@ -1,6 +1,7 @@
 package com.apps.marcos.makeyourmeetings.Models;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Reunioes {
 
@@ -26,21 +27,23 @@ public class Reunioes {
     public static final String nomeCampoId = "idReuniao";
     public static final String nomeCampoDescricaoReuniao = "descricaoReuniao";
 
-    private Calendar dataReuniao;
+    private GregorianCalendar dataReuniao;
     private int statusReuniao;
     private String descricaoReuniao;
+    private int idReuniao;
 
-    public Reunioes(Calendar dataReuniao, int statusReuniao, String descricaoReuniao){
+    public Reunioes(GregorianCalendar dataReuniao, int statusReuniao, String descricaoReuniao){
         this.dataReuniao = dataReuniao;
         this.statusReuniao = statusReuniao;
         this.descricaoReuniao = descricaoReuniao;
     }
 
-    public Calendar getDataReuniao() {
+    public GregorianCalendar getDataReuniao() {
+
         return dataReuniao;
     }
 
-    public void setDataReuniao(Calendar dataReuniao) {
+    public void setDataReuniao(GregorianCalendar dataReuniao) {
         this.dataReuniao = dataReuniao;
     }
 
@@ -59,4 +62,13 @@ public class Reunioes {
     public void setDescricaoReuniao(String descricaoReuniao) {
         this.descricaoReuniao = descricaoReuniao;
     }
+
+    public int getIdReuniao() {
+        return idReuniao;
+    }
+
+    public void setIdReuniao(int idReuniao) {
+        this.idReuniao = idReuniao;
+    }
+
 }
