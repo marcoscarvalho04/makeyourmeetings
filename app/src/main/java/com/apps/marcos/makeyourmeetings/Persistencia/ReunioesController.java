@@ -4,14 +4,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.provider.ContactsContract;
+
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
-import java.util.Iterator;
+
 
 import com.apps.marcos.makeyourmeetings.Models.Reunioes;
 
@@ -112,6 +111,7 @@ public class ReunioesController {
             valoresCampos.add(String.valueOf(reuniao.getIdReuniao()));
         }
         if(reuniao.getStatusReuniao() > 0){
+            System.out.println("DEBUG: Checando consistência de dados: Verificando se o status reunião está na tabela de status Reuniões");
             campos.add("statusReuniao");
             valoresCampos.add(String.valueOf(reuniao.getStatusReuniao()));
         }
@@ -123,13 +123,14 @@ public class ReunioesController {
             campos.add("dataReuniao");
             valoresCampos.add(String.valueOf(reuniao.getDataReuniao()));
         }
-        System.out.println("DEBUG: Campos coletados. Montando clausura WHERE da consulta");
+        System.out.println("DEBUG: Campos coletados: \n idReuniao = "+reuniao.getIdReuniao()+"\n statusReuniao = "+reuniao.getStatusReuniao());
+        System.out.println("descricaoReuniao = "+reuniao.getDescricaoReuniao()+"\ndataReuniao = "+reuniao.getDataReuniao().toString());
+        System.out.println("DEBUG: Montando clausura WHERE ");
         for(String campoSelecionado : campos){
             clausuraWhere += campoSelecionado+"=? AND";
         }
         System.out.println("DEBUG: Clausura WHERE montada. montando o cursor para a pesquisa");
-        String camposPesquisa[] = new String[campos.size()];
-        camposPesquisa = (String[]) campos.toArray();
+        String camposPesquisa[] = (String[]) campos.toArray();
         cursor = db.query(reuniao.nomeTabelaReunioes,camposPesquisa,clausuraWhere,(String[]) valoresCampos.toArray(),null,null,"idReuniao");
         System.out.println("DEBUG: pesquisa feita. Verificando cursor para retornar o valor certo do método");
         if(cursor == null) return null;

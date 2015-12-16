@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.apps.marcos.makeyourmeetings.Models.StatusReunioes;
+
 
 /*--------------------------------------------------------------------------------------------------------------------------------|
    * Classe: StatusReunioesController
@@ -20,10 +22,13 @@ public class StatusReunioesController {
 
     private SQLiteDatabase db;
     private CriarBancoSQLite criarBancoSQLite;
-    public Cursor retornarStatusReuniao;
+
 
     public StatusReunioesController(Context context){
         this.criarBancoSQLite = CriarBancoSQLite.retornarBancoSQLite(context);
+    }
+    public StatusReunioesController(CriarBancoSQLite criarBancoSQLite){
+        this.criarBancoSQLite = criarBancoSQLite;
     }
 
     public Cursor retornarStatusReuniao(int idStatus){
@@ -37,5 +42,23 @@ public class StatusReunioesController {
         * IllegalException - Exceção ao tentar fazer a inserção da informação.
         *
         * */
+        System.out.println("DEBUG: Iniciando operação de coleta das informações. Verificando parâmetros");
+        if(idStatus <= 0) {
+            System.out.println("DEBUG: idStatus inválido. Jogando exceção a ser tratada");
+            throw new IllegalArgumentException("Status de reunião inválido.");
+        } else {
+            db = DatabaseManager.getReadbleDatabase(this.criarBancoSQLite);
+            System.out.println("DEBUG: Parâmetro correto. Retornando status de reunião de acordo com o parâmetro informado ");
+            String clausuraWhere = new String();
+            System.out.println("DEBUG: Montando Clausura WHERE");
+            clausuraWhere = "=?";
+            String[] camposPesquisa = {"idStatus"};
+            String[] valores = {String.valueOf(idStatus)};
+            System.out.println("DEBUG: Clausura WHERE montada, junto aos valores. Consultando e retornando caso encontre valores. Caso contrário, retornar NULL");
+            Cursor pesquisa = db.query(StatusReunioes.nomeTabelaStatusReunioes, camposPesquisa, clausuraWhere, valores, null, null, StatusReunioes.nomeCampoIdStatusReunioes);
+            if(pesquisa == null) return null;
+            pesquisa.moveToFirst();
+            return pesquisa;
+        }
     }
 }
